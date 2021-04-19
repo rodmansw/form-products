@@ -7,7 +7,7 @@
     "start": "node dist/index.js",
     "dev": "nodemon --config nodemon.json src/index.ts",
     "dev:debug": "nodemon --config nodemon.json --inspect-brk src/index.ts",
-    "build": "tsc --project ./",
+    "build-?": "tsc --project ./",
     "server": "env-cmd -f .env docker-compose up -d --force-recreate",
     "server-up": "env-cmd -f .env docker-compose up",
     "server-build": "env-cmd -f .env docker-compose build --no-cache"
