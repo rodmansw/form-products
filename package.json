@@ -7,7 +7,7 @@
     "start": "node dist/index.js",
     "dev": "nodemon --config nodemon.json src/index.ts",
     "dev:debug": "nodemon --config nodemon.json --inspect-brk src/index.ts",
-    "build": "tsc --project ./",
+    "build": "tsc --project ./ && copyfiles -f ./src/**/*.png dist/public/images",
     "server": "env-cmd -f .env docker-compose up -d --force-recreate",
     "server-up": "env-cmd -f .env docker-compose up",
     "server-build": "env-cmd -f .env docker-compose build --no-cache"
@@ -31,6 +31,7 @@
     "@types/node": "^14.14.41",
     "@types/pg": "^7.14.11",
     "@types/pg-format": "^1.0.1",
+    "copyfiles": "^2.4.1",
     "dotenv": "^8.2.0",
     "env-cmd": "^10.1.0",
     "nodemon": "^2.0.7",
