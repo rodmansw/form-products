@@ -1,0 +1,30 @@
+version: '3.6'
+services:
+  postgres:
+    image: postgres:12.3
+    restart: always
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_NAME}
+  back:
+    build: .
+    volumes:
+      - ./:/back
+      - /back/node_modules
+    ports:
+      - '4000:4000'
+    environment:
+      DB_USER: ${DB_USER}
+      DB_PORT: 5432
+      DB_PASSWORD: ${DB_PASSWORD}
+      DB_NAME: ${DB_NAME}
+      DB_HOST: postgres-server
+    depends_on:
+      - postgres
+    links:
+      - 'postgres:postgres-server'
+volumes:
+  db_data:

@@ -1,0 +1,40 @@
+{
+  "name": "fk-back",
+  "version": "1.0.0",
+  "description": "Build a simple API that serves the product data in `products.json`. Simple CRUD endpoints are fine, though feel free to get creative.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node dist/index.js",
+    "dev": "nodemon --config nodemon.json src/index.ts",
+    "dev:debug": "nodemon --config nodemon.json --inspect-brk src/index.ts",
+    "build": "tsc --project ./",
+    "server": "env-cmd -f .env docker-compose up -d --force-recreate",
+    "server-up": "env-cmd -f .env docker-compose up",
+    "server-build": "env-cmd -f .env docker-compose build --no-cache"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "apollo-server": "^2.23.0",
+    "apollo-server-express": "^2.23.0",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "graphql": "^15.5.0",
+    "pg": "^8.6.0",
+    "pg-camelcase": "^0.0.3",
+    "pg-format": "^1.0.4"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.11",
+    "@types/node": "^14.14.41",
+    "@types/pg": "^7.14.11",
+    "@types/pg-format": "^1.0.1",
+    "dotenv": "^8.2.0",
+    "env-cmd": "^10.1.0",
+    "nodemon": "^2.0.7",
+    "ts-node": "^9.1.1",
+    "typescript": "^4.2.4"
+  }
+}
