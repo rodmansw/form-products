@@ -29,7 +29,7 @@ export async function runSeed() {
         )
       `)
 
-      await pg.query(
+      const { rows } = await pg.query(
         format(
           `
             INSERT INTO public.products (
@@ -49,6 +49,7 @@ export async function runSeed() {
       )
 
       console.log('DONE RUNNING SEEDS!! 🚀🚀')
+      return rows
     }
   } catch (error) {
     console.log('ERROR RUNNING SEEDS!!')
