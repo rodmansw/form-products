@@ -24,18 +24,18 @@ async function startApolloServer() {
 
   server.applyMiddleware({ app, path: '/api/graphql' })
 
-  app.use('/api', (req, res) => {
-    res.status(200)
-    res.send('Hello!')
-    res.end()
-  })
-
   app.use('/api/static', express.static(__dirname + '/public'))
 
   app.use('/api/seed', async (req, res) => {
     const rows = await runSeed()
     res.status(200)
     res.json(rows)
+    res.end()
+  })
+
+  app.use('/api', (req, res) => {
+    res.status(200)
+    res.send('Hello!')
     res.end()
   })
 
